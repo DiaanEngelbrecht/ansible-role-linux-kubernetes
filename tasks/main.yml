@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: 
+- include_tasks:
     file: "{{ item }}"
     apply:
       tags: repo
@@ -10,53 +10,53 @@
 
 - setup:
 
-- include_tasks: 
+- include_tasks:
     file: preflight.yml
     apply:
       tags: preflight
   tags: preflight
 
-- include_tasks: 
+- include_tasks:
     file: install_cri.yml
     apply:
       tags: cri
   tags: cri
 
-- include_tasks: 
+- include_tasks:
     file: install_kubectl.yml
     apply:
       tags: kubectl
   tags: kubectl
 
-- include_tasks: 
+- include_tasks:
     file: init_cluster.yml
     apply:
       tags: kubeinit
   tags: kubeinit
 
-- include_tasks: 
+- include_tasks:
     file: join_cluster.yml
     apply:
       tags: kubejoin
   tags: kubejoin
 
-- include_tasks: 
+- include_tasks:
     file: setup_vip.yml
     apply:
       tags: k8s_vip
   tags: k8s_vip
-  when: 
+  when:
     - setup_vip
     - inventory_hostname in groups['kubemaster']
 
-- include_tasks: 
+- include_tasks:
     file: install_longhorn.yml
     apply:
       tags: install_longhorn
   tags: install_longhorn
   when: install_longhorn
 
-- include_tasks: 
+- include_tasks:
     file: install_nginx_ingress.yml
     apply:
       tags: install_nginx_ingress

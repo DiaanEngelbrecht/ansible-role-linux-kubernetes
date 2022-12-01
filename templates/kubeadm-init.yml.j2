@@ -20,7 +20,7 @@ nodeRegistration:
 ---
 apiServer:
   timeoutForControlPlane: 4m0s
-  certSANs: 
+  certSANs:
 {% for san in apiserver_sans %}
   - "{{ san }}"
 {% endfor %}
